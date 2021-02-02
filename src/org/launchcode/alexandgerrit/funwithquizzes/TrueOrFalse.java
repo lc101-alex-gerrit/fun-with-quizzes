@@ -1,17 +1,11 @@
 package org.launchcode.alexandgerrit.funwithquizzes;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class TrueOrFalse extends Question {
 
-    public TrueOrFalse (String question, String correctAnswer) {
-        super(question, correctAnswer);
-    }
-
-    @Override
-    public boolean checkAnswer() {
-        String userAnswer = getAnswerFromUser();
-        if (userAnswer.equals(getCorrectAnswer())) {
-            return true;
-        }
-        return false;
+    public TrueOrFalse(String question, String correctAnswer) {
+        super(question, correctAnswer, new ArrayList<String>(Arrays.asList("True", "False")));
     }
 }

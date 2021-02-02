@@ -1,6 +1,7 @@
 package org.launchcode.alexandgerrit.funwithquizzes;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public abstract class Question {
@@ -9,18 +10,28 @@ public abstract class Question {
     private String correctAnswer;
     private ArrayList<String> answersArray;
 
-    public Question(String question, String correctAnswer) {
+    public Question(String question, String correctAnswer, ArrayList<String> answersArray) {
         this.question = question;
         this.correctAnswer = correctAnswer;
+        this.answersArray = answersArray;
     }
 
-    public abstract boolean checkAnswer();
+    public boolean checkAnswer() {
+        String userAnswer = getAnswerFromUser();
+        if (userAnswer.toLowerCase().equals(getCorrectAnswer().toLowerCase())) {
+
+            return true;
+        }
+        return false;
+    }
 
     public String getAnswerFromUser() {
         System.out.println(this.question);
+        System.out.println(answersArray);
         userInput = new Scanner(System.in);
         String userAnswer = userInput.nextLine();
-        userInput.close();
+
+
         return userAnswer;
     }
 
